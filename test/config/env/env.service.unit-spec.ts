@@ -19,9 +19,19 @@ describe('EnvService', () => {
     expect(sut).toBeDefined()
   })
 
-  it('should return the correct port number on success', () => {
-    const port = sut.getAppPort()
+  describe('getAppPort method', () => {
+    it('should return the correct port number on success', () => {
+      const port = sut.getAppPort()
 
-    expect(port).toBe(3000)
+      expect(port).toBe(3000)
+    })
+  })
+
+  describe('getNodeEnv method', () => {
+    it('should return the correct node env on success', () => {
+      const nodeEnv = sut.getNodeEnv()
+
+      expect(nodeEnv).toBe('test')
+    })
   })
 })
