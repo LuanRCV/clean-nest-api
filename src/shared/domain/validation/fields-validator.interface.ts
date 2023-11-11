@@ -1,7 +1,7 @@
 export type FieldsErrors = Record<string, string[]>
 
-export interface FieldsValidator<Props> {
+export interface IFieldsValidator<Props> {
   errors: FieldsErrors
   props: Props
-  validate: (data: any) => boolean
+  validate: (data: Props) => boolean
 }
