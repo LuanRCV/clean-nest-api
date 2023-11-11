@@ -1,4 +1,4 @@
-export type UserParams = {
+export type UserProps = {
   name: string
   email: string
   password: string
@@ -7,8 +7,24 @@ export type UserParams = {
 
 export class UserEntity {
   constructor (
-    public readonly data: UserParams
+    private readonly props: UserProps
   ) {
-    this.data.createdAt = this.data.createdAt ?? new Date()
+    this.props.createdAt = this.props.createdAt ?? new Date()
+  }
+
+  get name (): string {
+    return this.props.name
+  }
+
+  get email (): string {
+    return this.props.email
+  }
+
+  get password (): string {
+    return this.props.password
+  }
+
+  get createdAt (): Date {
+    return this.props.createdAt
   }
 }
