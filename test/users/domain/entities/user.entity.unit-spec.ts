@@ -1,6 +1,6 @@
 import { UserEntity, type UserProps } from '@/users/domain/entities/user.entity'
-import { faker } from '@faker-js/faker'
 import MockDate from 'mockdate'
+import { mockUserProps } from '../../mocks/user-props.mock'
 
 describe('UserEntity', () => {
   let userProps: UserProps
@@ -15,11 +15,7 @@ describe('UserEntity', () => {
   })
 
   beforeEach(() => {
-    userProps = {
-      name: faker.person.fullName(),
-      email: faker.internet.email(),
-      password: faker.internet.password()
-    }
+    userProps = mockUserProps()
     sut = new UserEntity(userProps)
   })
 
