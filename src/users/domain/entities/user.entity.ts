@@ -1,4 +1,5 @@
 export type UserProps = {
+  id: string
   name: string
   email: string
   password: string
@@ -10,6 +11,10 @@ export class UserEntity {
     private readonly props: UserProps
   ) {
     this.props.createdAt = this.props.createdAt ?? new Date()
+  }
+
+  get id (): string {
+    return this.props.id
   }
 
   get name (): string {

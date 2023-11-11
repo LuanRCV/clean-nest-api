@@ -21,6 +21,7 @@ describe('UserEntity', () => {
 
   describe('Constructor', () => {
     test('should create a UserEntity with correct values on success', () => {
+      expect(sut.id).toEqual(userProps.id)
       expect(sut.name).toEqual(userProps.name)
       expect(sut.email).toEqual(userProps.email)
       expect(sut.password).toEqual(userProps.password)
