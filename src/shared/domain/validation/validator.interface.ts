@@ -5,7 +5,3 @@ export interface Validator<Props> {
   props: Props
   validate: (data: Props) => boolean
 }
-
-export interface ClassValidator {
-
-}
