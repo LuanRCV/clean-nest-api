@@ -18,7 +18,7 @@ describe('FieldsValidator', () => {
   })
 
   describe('validate method', () => {
-    it('should validate with adequated errors', () => {
+    it('should validate with adequated errors on fail', () => {
       const validateSyncSpy = jest.spyOn(classValidator, 'validateSync')
       validateSyncSpy.mockReturnValue([
         {
@@ -35,6 +35,18 @@ describe('FieldsValidator', () => {
       expect(sut.errors).toEqual({
         field: ['test error']
       })
+    })
+
+    it('should validate without errors on success', () => {
+      const validateSyncSpy = jest.spyOn(classValidator, 'validateSync')
+      validateSyncSpy.mockReturnValue([])
+
+      expect(sut.validate({ field: 'value' })).toBeTruthy()
+      expect(validateSyncSpy).toHaveBeenCalled()
+      expect(sut.props).toEqual({
+        field: 'value'
+      })
+      expect(sut.errors).toEqual({})
     })
   })
 })
