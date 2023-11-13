@@ -1,15 +1,6 @@
 import { UserEntity, type UserProps } from '@/users/domain/entities/user.entity'
 import MockDate from 'mockdate'
-import { faker } from '@faker-js/faker'
-
-export function mockUserProps (): UserProps {
-  return {
-    id: faker.string.uuid(),
-    name: faker.person.fullName(),
-    email: faker.internet.email(),
-    password: faker.internet.password()
-  }
-}
+import { mockUserProps } from '../mocks/user-entity.mock'
 
 describe('UserEntity', () => {
   let userProps: UserProps
