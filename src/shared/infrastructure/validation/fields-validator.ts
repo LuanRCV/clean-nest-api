@@ -1,7 +1,7 @@
-import { type IFieldsValidator } from '@/shared/domain/validation/fields-validator.interface'
+import { type IValidator } from '@/shared/domain/validation/validator.interface'
 import { validateSync } from 'class-validator'
 
-export class FieldsValidator<Props> implements IFieldsValidator<Props> {
+export class FieldsValidator<Props> implements IValidator<Props> {
   errors = {}
   props = null
 
