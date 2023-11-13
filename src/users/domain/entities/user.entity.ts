@@ -1,3 +1,5 @@
+import { UserValidatorFactory } from '../validation/user.validator'
+
 export type UserProps = {
   id: string
   name: string
@@ -10,7 +12,13 @@ export class UserEntity {
   constructor (
     private readonly props: UserProps
   ) {
+    UserEntity.validate(props)
     this.props.createdAt = this.props.createdAt ?? new Date()
+  }
+
+  static validate (props: UserProps): void {
+    const validator = UserValidatorFactory.create()
+    validator.validate(props)
   }
 
   get id (): string {
@@ -22,6 +30,7 @@ export class UserEntity {
   }
 
   set name (name: string) {
+    UserEntity.validate({ ...this.props, name })
     this.name = name
   }
 
@@ -30,6 +39,7 @@ export class UserEntity {
   }
 
   set email (email: string) {
+    UserEntity.validate({ ...this.props, email })
     this.email = email
   }
 
@@ -38,6 +48,7 @@ export class UserEntity {
   }
 
   set password (password: string) {
+    UserEntity.validate({ ...this.props, password })
     this.password = password
   }
 
